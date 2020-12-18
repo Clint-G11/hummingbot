@@ -839,7 +839,7 @@ cdef class DydxExchange(ExchangeBase):
                     # the books, we use -limit and -market to represent LIMIT_MAKER and LIMIT/MARKET respectively
                     self._trading_rules[f"{market_name}-limit"] = TradingRule(
                         trading_pair = market_name,
-                        min_order_size = self.token_configuration.unpad(market['smallOrderThreshold'], baseid),
+                        min_order_size = Decimal ('0'),
                         min_price_increment = price_increment,
                         min_base_amount_increment = Decimal(f"1e-{decimals}"),
                         min_notional_size = self.token_configuration.unpad(market['smallOrderThreshold'], baseid) * price_increment,
@@ -848,7 +848,7 @@ cdef class DydxExchange(ExchangeBase):
                     )
                     self._trading_rules[f"{market_name}-market"] = TradingRule(
                         trading_pair = market_name,
-                        min_order_size = self.token_configuration.unpad(market['minimumOrderSize'], baseid),
+                        min_order_size = Decimal ('0'),
                         min_price_increment = price_increment,
                         min_base_amount_increment = Decimal(f"1e-{decimals}"),
                         min_notional_size = self.token_configuration.unpad(market['minimumOrderSize'], baseid) * price_increment,
